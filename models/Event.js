@@ -15,7 +15,8 @@ module.exports = class Event {
 	constructor(name, location, distance, type, tier) {
 		this.name = name;
 		this.location = location;
-		this.distance = distance;
+		this.distanceKm = Number.parseFloat(distance).toFixed(2);
+		this.distanceMi = Number.parseFloat(distance / 1.6).toFixed(2);
 		this.type = test(type, events.EVENTS_TYPES);
 		this.tier = type === "Multiplayer" ? new Tier("Any", "Both") : tier;
 	}
