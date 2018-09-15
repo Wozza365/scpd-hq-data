@@ -48,13 +48,12 @@ router.put('/ranks', (req, res) => {
 router.put('/events', (req, res) => {
 	mongo.connect(dbUri, (err, client) => {
 		const dbModel = client.db("model");
-		const dbStore = client.db("store");
 
 		dbModel.collection("event.type").insertMany(keys(events.EVENTS_TYPES), log);
 		dbModel.collection("event.tier").insertMany(keys(events.EVENTS_TIERS), log);
 		dbModel.collection("event.player").insertMany(keys(events.EVENTS_PLAYERS), log);
-		dbStore.collection("event.singleplayer").insertMany(keys(events.EVENTS_SP), log);
-		dbStore.collection("event.multiplayer").insertMany(keys(events.EVENTS_MP), log);
+		dbModel.collection("event.singleplayer").insertMany(keys(events.EVENTS_SP), log);
+		dbModel.collection("event.multiplayer").insertMany(keys(events.EVENTS_MP), log);
 
 		client.close();
 		res.send("Events added: " + JSON.stringify({
