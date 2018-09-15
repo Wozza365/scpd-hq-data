@@ -1,0 +1,5 @@
+{
+  "serverPath": "./app.js",
+  "controllersPath": "./controllers",
+  "modelsPath": "./models"
+}
