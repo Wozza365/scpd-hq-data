@@ -1,32 +1,20 @@
-var dbUri = require('../helpers/db').dbUri;
 var mongo = require('mongodb').MongoClient;
 
 // db controller routes
 var express = require('express');
 var router = express.Router();
 
-// models
-var User = require('../models/User');
-
 // enums
 var users = require("../enums/users");
 var ranks = require("../enums/ranks");
 var events = require("../enums/events");
+var eventTimes = require("../enums/eventTimes");
+
+// helpers
+var dbUri = require('../helpers/db').dbUri;
 var keys = require("../helpers/enum-help").keys;
 var len = require("../helpers/enum-help").length;
 var log = require("../helpers/db").log;
-
-// get /api/db/
-router.put('/users', (req, res) => {
-	mongo.connect(dbUri, (err, client) => {
-		const collection = client.db("store").collection('users');
-
-		collection.insertMany(users.DEFAULT_USERS, (err, result) => {
-			client.close();
-			res.send("Added " + users.DEFAULT_USERS.length + " users to the database");
-		});
-	});
-});
 
 router.put('/ranks', (req, res) => {
 	mongo.connect(dbUri, (err, client) => {
@@ -43,6 +31,17 @@ router.put('/ranks', (req, res) => {
 			"Police": len(ranks.POLICE_RANKS)
 		}));
 	})
+});
+
+router.put('/users', (req, res) => {
+	mongo.connect(dbUri, (err, client) => {
+		const collection = client.db("store").collection('user.user');
+
+		collection.insertMany(users.DEFAULT_USERS, (err, result) => {
+			client.close();
+			res.send("Added " + users.DEFAULT_USERS.length + " users to the database");
+		});
+	});
 });
 
 router.put('/events', (req, res) => {
@@ -65,5 +64,16 @@ router.put('/events', (req, res) => {
 		}));
 	});
 });
+
+router.put('/times', (req, res) => {
+	mongo.connect(dbUri, (err, client) => {
+		const dbStore = client.db("store");
+
+		dbStore.collection("event.times").insertMany(eventTimes.DEFAULT_TIMES, log);
+		
+		client.close();
+		res.send("Event results added: " + eventTimes.DEFAULT_TIMES.length);
+	})
+})
 
 module.exports = router;

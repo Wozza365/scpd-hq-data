@@ -12,4 +12,5 @@ module.exports.DEFAULT_USERS = [
 	new User("guysgotryPhantomForces", "123123", "Radon", "Captain", true, "Most Wanted", "Ultimate Enforcer"),
 	new User("Disasterbenz", "123123", "Disasterbenz", "Captain", true, "Most Wanted", "Ultimate Enforcer"),
 	new User("Agustincho200", "123123", "Agustincho1", "Undercover", false, "Most Wanted", "Ultimate Enforcer"),
+	new User("Zenon_0", "123123", "Zenon_0", "Undercover", false, "Most Wanted", "Ultimate Enforcer"),
 ];
