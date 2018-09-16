@@ -37,6 +37,29 @@ This is my first mongoDB project so I'm sure there are better ways to script a n
 
 `PUT: api/db/ranks` - Create rank model tables with the ranks
 
+`PUT: api/db/users` - Create a user collection and add the default (admin) users to it.
+
 `PUT: api/db/events` - Add Event related models and list of in-game events
 
-`PUT: api/db/users` - Create a user collection and add the default (admin) users to it.
+`PUT: api/db/times` - Create some (real) sample singleplayer event times
+
+
+### TO-DO
+
+- Multiplayer leaderboard
+  - Requires a "total" per player collection and then a collection for each individual event entry
+  
+- Social media links (eg Discord, YouTube)
+  - (Hopefully can load every social media entry)
+  - Link
+  - Image/icon (consider 512MB db limit)
+  - Description
+  - 3rd party, eg player YouTube channel
+  
+- Enhance singleplayer times (number of attempts? controller/kb/wheel used?)
+
+- Vehicle List
+
+- Start location list (for easier grouping and checking?)
+
+...probably a lot more
