@@ -52,16 +52,16 @@ router.put('/events', (req, res) => {
 		dbModel.collection("event.type").insertMany(keys(events.EVENTS_TYPES), log);
 		dbModel.collection("event.tier").insertMany(keys(events.EVENTS_TIERS), log);
 		dbModel.collection("event.player").insertMany(keys(events.EVENTS_PLAYERS), log);
-		dbModel.collection("event.singleplayer").insertMany(keys(events.EVENTS_SP), log);
-		dbModel.collection("event.multiplayer").insertMany(keys(events.EVENTS_MP), log);
+		dbModel.collection("event.singleplayer").insertMany(events.EVENTS_SP, log);
+		dbModel.collection("event.multiplayer").insertMany(events.EVENTS_MP, log);
 
 		client.close();
 		res.send("Events added: " + JSON.stringify({
 			"Types": len(events.EVENTS_TYPES),
 			"Tiers": len(events.EVENTS_TIERS),
 			"Players": len(events.EVENTS_PLAYERS),
-			"Singleplayer": len(events.EVENTS_SP),
-			"Multiplayer": len(events.EVENTS_MP),
+			"Singleplayer": events.EVENTS_SP.length,
+			"Multiplayer": events.EVENTS_MP.length,
 		}));
 	});
 });

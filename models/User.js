@@ -12,11 +12,11 @@ module.exports = class User {
 	 * @param {ranks.RACER_RANKS} racerRank
 	 * @param {ranks.POLICE_RANKS} policeRank
 	 */
-	constructor(username, password, discordName, discordRank, adminAccess, racerRank, policeRank) {
+	constructor(gameName, password, discordName, discordRank, adminAccess, racerRank, policeRank) {
 		this.adminAccess = adminAccess;
 		this.discordName = discordName;
 		this.discordRank = test(discordRank, ranks.DISCORD_RANKS);
-		this.username = username;
+		this.gameName = gameName;
 		this.password = password;
 		this.racerRank = test(racerRank, ranks.RACER_RANKS);
 		this.policeRank = test(policeRank, ranks.POLICE_RANKS);

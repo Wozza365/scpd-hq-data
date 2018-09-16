@@ -31,7 +31,7 @@ app.get('/test', (req, res) => {
 		"Racer Ranks": ranks.RACER_RANKS.enums,
 		"Police Ranks": ranks.POLICE_RANKS.enums,
 		"Multiplayer Events": events.EVENTS_MP,
-		"Singleplayer Events": events.EVENTS_SP,
+		"Singleplayer Events": events.EVENTS_SP.length,
 		"Default Users": users.DEFAULT_USERS
 	});
 });
